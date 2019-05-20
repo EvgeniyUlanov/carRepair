@@ -12,7 +12,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/car_repair
     driver-class-name: org.postgresql.Driver
     initialization-mode: always
-#    schema: classpath:/schema/schema-postgres.sql
+    schema: classpath:/schema/schema-postgres.sql
 #    data: classpath:/schema/data-postgres.sql
   jpa:
     hibernate:

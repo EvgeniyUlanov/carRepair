@@ -20,6 +20,10 @@ public class ManagerAccount {
     @Column(name = "telephone")
     private String telephone;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public ManagerAccount() {
     }
 
@@ -58,6 +62,14 @@ public class ManagerAccount {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

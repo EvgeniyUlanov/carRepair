@@ -30,6 +30,10 @@ public class ClientAccount {
     @JoinColumn(name = "client_account_id", referencedColumnName = "client_account_id", nullable = false)
     private List<Order> orders = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public ClientAccount() {
     }
 
@@ -85,6 +89,14 @@ public class ClientAccount {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
