@@ -6,3 +6,25 @@ services:
     build: "clientService/"
     ports:
       - 8080:8080
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/car_repair
+    networks:
+      - car_service
+
+  db:
+      container_name: postgres_db
+      image: postgres:alpine
+      restart: always
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=784512963
+        - POSTGRES_DB=car_repair
+      networks:
+        - car_service
+      ports:
+        - 5432:5432
+
+networks:
+  - car_service

@@ -1,0 +1,49 @@
+spring:
+  profiles:
+    active: h2
+
+
+---
+spring:
+  profiles: postgres
+  datasource:
+    username: postgres
+    password: 784512963
+    url: jdbc:postgresql://localhost:5432/car_repair
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+#    schema: classpath:/schema/schema-postgres.sql
+#    data: classpath:/schema/data-postgres.sql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+
+---
+spring:
+  profiles: h2
+  datasource:
+    url: jdbc:h2:mem:car_repair
+    initialization-mode: always
+    schema: classpath:/schema/schema.sql
+#    data: classpath:/schema/data.sql
+  jpa:
+    hibernate:
+       ddl-auto: update
+  h2:
+     console:
+        enabled: true
+
+---
+spring:
+  profiles: emptyH2
+  datasource:
+      url: jdbc:h2:mem:library
+      initialization-mode: always
+      schema: classpath:/schema/schema.sql
+  jpa:
+      hibernate:
+         ddl-auto: update
